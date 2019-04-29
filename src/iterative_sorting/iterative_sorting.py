@@ -39,7 +39,7 @@ print(bubble_sort([8,7,10,19,2,22,24,3]))
 # STRETCH: implement the Count Sort function below
 def count_sort( arr, maximum=-1 ):
     max_val = max(arr)
-    counting = [0] * max_val
+    counting = [0] * (max_val + 1)
     for i in range(0,len(counting)):
         for p in range(0,len(arr)-1):
             if i == arr[p]:
