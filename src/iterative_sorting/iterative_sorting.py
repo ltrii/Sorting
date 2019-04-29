@@ -38,5 +38,12 @@ print(bubble_sort([8,7,10,19,2,22,24,3]))
 
 # STRETCH: implement the Count Sort function below
 def count_sort( arr, maximum=-1 ):
+    max_val = max(arr)
+    counting = [0] * max_val
+    for i in range(0,len(counting)):
+        for p in range(0,len(arr)-1):
+            if i == arr[p]:
+                counting[i] += 1
+    return counting
 
-    return arr
+print(count_sort([1,5,3,3,3,3,10,10,10,6,4,9,2]))
