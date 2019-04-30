@@ -3,12 +3,20 @@ def merge( arrA, arrB ):
     elements = len( arrA ) + len( arrB )
     merged_arr = [0] * elements
     # TO-DO
-    r = 0
-    s = 0
-    for i in range(elements):
-        if r >= len(arrA):
-            merged_arr[i] = arrB[s]
-            s += 1
+    while len(arrA) > 0 and len(arrB) > 0:
+        smallest = min(arrA[0], arrB[0])
+        if smallest == arrA[0]:
+            arrA.pop(0)
+            merged_arr.append(smallest)
+        else:
+            arrB.pop(0)
+            merged_arr.append(smallest)
+    if len(arrA) > 0:
+        for i in arrA:
+            merged_arr.append(i)
+    else:
+        for i in arrB:
+            merged_arr.append(i)
     
     return merged_arr
 
@@ -17,13 +25,14 @@ def merge( arrA, arrB ):
 def merge_sort( arr ):
     # TO-DO
     if len(arr) > 1:
-        leftHalf = merge_sort(arr[0:len(arr)/2])
-        rightHalf = merge_sort(arr[len(arr)/2:])
+        cutpoint = int(len(arr)/2)
+        leftHalf = merge_sort(arr[:cutpoint])
+        rightHalf = merge_sort(arr[cutpoint:])
         arr = merge(leftHalf, rightHalf)
 
     return arr
 
-print(merge_sort([5,1,9,3,4]))
+merge_sort([8,5,7,3,2,9])
 
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
