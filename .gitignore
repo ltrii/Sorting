@@ -1,2 +1,4 @@
 .DS_Store
-./__pycache__/
+./iterative_sorting/__pycache__/*
+./recursive_sorting/__pycache__/*
+./searching/__pycache__/*
